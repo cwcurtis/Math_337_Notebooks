@@ -1,11 +1,12 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from FilePlotting import FileMaker
 
 
 class DiffeqSolver(object):
 
-    def __init__(self, dt, t0, tf, y0, fun):
+    def __init__(self, dt, t0, tf, y0, fun, description):
         self.dt = dt
         self.t0 = t0
         self.tf = tf
@@ -16,12 +17,14 @@ class DiffeqSolver(object):
         self.tvals = np.linspace(t0, tf, nstep+1)
         self.ysols = np.zeros((nstep + 1, 3), dtype=np.float64)
         self.track = [0, 0, 0]
+        self.fhandle = FileMaker('diffeq_solver_figs_' + description)
 
     def PlotSol(self, ysol, tag):
         plt.plot(self.tvals, ysol, color='k')
         plt.xlabel("$t$")
         plt.ylabel("$y(t)$")
         plt.title("Solution generated via " + tag + " method")
+        plt.savefig(self.fhandle + tag + '.png', format='png')
 
     def PlotCompare(self, fact):
         yact = fact(self.tvals)
@@ -35,6 +38,7 @@ class DiffeqSolver(object):
         plt.ylabel("$y(t)$")
         plt.title("Comparison of Numerical Solutions to True Solution")
         plt.legend()
+        plt.savefig(self.fhandle + 'Comparison_Plot' + '.png', format='png')
 
     def TableCompare(self, fact):
         yact = fact(self.tvals)

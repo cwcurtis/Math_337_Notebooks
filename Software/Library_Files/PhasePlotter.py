@@ -1,14 +1,16 @@
 import numpy as np
 import scipy.optimize as spo
 import matplotlib.pyplot as plt
+from FilePlotting import FileMaker
 
 
 class PhasePlotter(object):
 
-    def __init__(self, a, b, fun):
+    def __init__(self, a, b, fun, description):
         self.a = a
         self.b = b
         self.fun = fun
+        self.fhandle = FileMaker('phase_figs_' + description)
 
     def PhaseField1D(self):
         dx = 1e-4
@@ -59,3 +61,5 @@ class PhasePlotter(object):
         plt.xlabel('$y$')
         plt.ylabel('$f(y)$')
         plt.title('Phase Plot')
+        plt.savefig(self.fhandle + 'One_Dimensional_Phase_Plot' + '.png', format='png')
+
