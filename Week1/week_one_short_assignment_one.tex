@@ -1,0 +1,78 @@
+ \documentclass[a4paper,11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{dfn}{Definition}
+\newtheorem{lem}{Lemma}
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+\newcommand{\bc}{\begin{center}}
+\newcommand{\ec}{\end{center}}
+
+\newcommand{\ds}{\displaystyle}
+
+\newcommand{\bt}{\begin{tabular}}
+\newcommand{\et}{\end{tabular}}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+
+\newcommand{\bp}{\begin{pmatrix}}
+\newcommand{\ep}{\end{pmatrix}}
+
+\newcommand{\p}{\partial}
+\newcommand{\sech}{\mbox{sech}}
+
+\newcommand{\cf}{{\it cf.}~}
+
+\newcommand{\ltwo}{L_{2}(\mathbb{R}^{2})}
+\newcommand{\smooth}{C^{\infty}_{0}(\mathbb{R}^{2})}
+
+\newcommand{\br}{{\bf r}}
+\newcommand{\bk}{{\bf k}}
+\newcommand{\bv}{{\bf v}}
+\newcommand{\bu}{{\bf u}}
+\newcommand{\bdd}{{\bf d}}
+\newcommand{\bpp}{{\bf p}}
+\newcommand{\bm}{{\bf m}}
+\newcommand{\bn}{{\bf n}}
+
+\newcommand{\pt}{\mathcal{K}}
+
+\newcommand{\gnorm}[1]{\left|\left| #1\right|\right|}
+\newcommand{\Lnorm}{L^{2}\left(\mathbb{R}^{2}\right)}
+\newcommand{\ipro}[2]{\left<#1,#2 \right>}
+\title{Gradescope Assignment: Due 1/27/21\\
+0 pts for no work\\ 2 pts for attempt\\ 4 pts for full answer}
+\date{}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item Using integration-by-parts $\left(\int udv = uv - \int vdu \right)$, show that 
+\[
+\int \cos(2x) e^{x}dx = \frac{e^{x}}{5}\left(\cos(2x) + 2\sin(2x) \right) + C
+\]
+\item For the function $f(t) = e^{\int_{0}^{t}\cos(x^2)dx}$, using the chain-rule $\left(d/dt(f(g(t)))=f'(g(t))g'(t)\right)$ and the Fundamental-Theorem of Calculus, show that 
+\[
+\frac{df}{dt} = e^{\int_{0}^{t}\cos(x^{2})dx}\cos(t^{2})
+\] 
+\item Suppose $A$ and $B$ are two $n\times n$ matrices which commute with respect to matrix products, i.e. $AB=BA$.  Show that $A^{2}$ and $B$ commute, or that $A^{2}B=BA^{2}$.  Note, $A^{2}=AA$.
+\end{enumerate}
+\end{document}
