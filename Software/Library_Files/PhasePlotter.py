@@ -6,10 +6,11 @@ from FilePlotting import FileMaker
 
 class PhasePlotter(object):
 
-    def __init__(self, a, b, fun, description):
+    def __init__(self, a, b, fun, axis, description):
         self.a = a
         self.b = b
         self.fun = fun
+        self.axis = axis
         self.fhandle = FileMaker('phase_figs_' + description)
 
     def PhaseField1D(self):
@@ -21,12 +22,18 @@ class PhasePlotter(object):
         ineg = fvals < 0.
         xpos = xvals[ipos]
         xneg = xvals[ineg]
-
         npos = np.size(xpos)
+        nneg = np.size(xneg)
         pjmps = xpos[1:] - xpos[:npos-1]
         pizrs = pjmps > 2.*dx
-        zrsl = xpos[:npos-1][pizrs]
-        zrsr = xpos[1:][pizrs]
+        if np.sum(pizrs) > 0:
+            zrsl = xpos[:npos-1][pizrs]
+            zrsr = xpos[1:][pizrs]
+        else:
+            pjmps = xneg[1:] - xneg[:nneg - 1]
+            pizrs = pjmps > 2. * dx
+            zrsl = xneg[:nneg - 1][pizrs]
+            zrsr = xneg[1:][pizrs]
 
         zrs = np.concatenate((zrsl, zrsr), 0)
         zrs = np.sort(zrs)
@@ -43,12 +50,12 @@ class PhasePlotter(object):
         plt.plot(xpos, fvals[ipos], color='b')
         plt.plot(xneg, fvals[ineg], color='r')
         plt.plot(xvals, np.zeros(np.size(xvals)), color='k')
-
+        head_size = .1
         for jj in range(nzrs-1):
             if fmds[jj] > 0.:
-                plt.arrow(mds[jj], 0., .1, 0., shape='full', length_includes_head=True, head_width=.1)
+                plt.arrow(mds[jj], 0., .1, 0., shape='full', length_includes_head=True, head_width=head_size)
             else:
-                plt.arrow(mds[jj], 0., -.1, 0., shape='full', length_includes_head=True, head_width=.1)
+                plt.arrow(mds[jj], 0., -.1, 0., shape='full', length_includes_head=True, head_width=head_size)
 
         for jj in range(1, nzrs-1):
             if fmds[jj-1] > 0. and fmds[jj] < 0.:
@@ -58,8 +65,8 @@ class PhasePlotter(object):
             else:
                 plt.plot(zrs[jj], 0., color='k', marker='o', markersize=10, fillstyle='right')
 
-        plt.xlabel('$y$')
-        plt.ylabel('$f(y)$')
+        plt.xlabel(self.axis)
+        plt.ylabel('f('+self.axis+')')
         plt.title('Phase Plot')
         plt.savefig(self.fhandle + 'One_Dimensional_Phase_Plot' + '.png', format='png')
 
