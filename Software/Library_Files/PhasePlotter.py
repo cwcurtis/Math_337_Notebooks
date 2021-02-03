@@ -26,7 +26,7 @@ class PhasePlotter(object):
         nneg = np.size(xneg)
         pjmps = xpos[1:] - xpos[:npos-1]
         pizrs = pjmps > 2.*dx
-        if np.sum(pizrs) > 0:
+        if np.mod(np.sum(pizrs), 2) > 0:
             zrsl = xpos[:npos-1][pizrs]
             zrsr = xpos[1:][pizrs]
         else:
