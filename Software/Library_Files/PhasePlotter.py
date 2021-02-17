@@ -1,5 +1,4 @@
 import numpy as np
-import scipy.optimize as spo
 import matplotlib.pyplot as plt
 from FilePlotting import FileMaker
 
@@ -14,13 +13,14 @@ class PhasePlotter(object):
         self.fhandle = FileMaker('phase_figs_' + description)
 
     def PhaseField1D(self):
-        dx = 1e-3
+        dx = 1e-2
         nvals = np.int((self.b-self.a)/dx)
         xvals = np.linspace(self.a, self.b, nvals + 1)
         fvals = self.fun(xvals)
 
         ipos = fvals >= 0.
         ineg = fvals < 0.
+
         xpos = xvals[ipos]
         xneg = xvals[ineg]
         npos = np.size(xpos)
@@ -48,9 +48,12 @@ class PhasePlotter(object):
         nzrs = np.size(zrs)
         mds = (zrs[1:] + zrs[:nzrs-1])/2.
         fmds = self.fun(mds)
-
-        plt.plot(xpos, fvals[ipos], color='b')
-        plt.plot(xneg, fvals[ineg], color='r')
+        fpos = np.zeros(np.size(xvals), dtype=np.float64)
+        fneg = np.zeros(np.size(xvals), dtype=np.float64)
+        fpos[ipos] = fvals[ipos]
+        fneg[ineg] = fvals[ineg]
+        plt.plot(xvals, fpos, color='b')
+        plt.plot(xvals, fneg, color='r')
         plt.plot(xvals, np.zeros(np.size(xvals)), color='k')
         head_size = .1*(np.max(fvals)-np.min(fvals))
         dx_arrow = .025*(self.b-self.a)
