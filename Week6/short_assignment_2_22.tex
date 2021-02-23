@@ -1,0 +1,135 @@
+ \documentclass[a4paper,11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{dfn}{Definition}
+\newtheorem{lem}{Lemma}
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+\newcommand{\bc}{\begin{center}}
+\newcommand{\ec}{\end{center}}
+
+\newcommand{\ds}{\displaystyle}
+
+\newcommand{\bt}{\begin{tabular}}
+\newcommand{\et}{\end{tabular}}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+
+\newcommand{\bp}{\begin{pmatrix}}
+\newcommand{\ep}{\end{pmatrix}}
+
+\newcommand{\p}{\partial}
+\newcommand{\sech}{\mbox{sech}}
+
+\newcommand{\cf}{{\it cf.}~}
+
+\newcommand{\ltwo}{L_{2}(\mathbb{R}^{2})}
+\newcommand{\smooth}{C^{\infty}_{0}(\mathbb{R}^{2})}
+
+\newcommand{\br}{{\bf r}}
+\newcommand{\bk}{{\bf k}}
+\newcommand{\bv}{{\bf v}} 
+\newcommand{\bu}{{\bf u}}
+\newcommand{\bdd}{{\bf d}}
+\newcommand{\bpp}{{\bf p}}
+\newcommand{\bm}{{\bf m}}
+\newcommand{\bn}{{\bf n}}
+
+\newcommand{\pt}{\mathcal{K}}
+
+\newcommand{\gnorm}[1]{\left|\left| #1\right|\right|}
+\newcommand{\Lnorm}{L^{2}\left(\mathbb{R}^{2}\right)}
+\newcommand{\ipro}[2]{\left<#1,#2 \right>}
+\pagestyle{empty}
+\begin{document}
+
+\begin{center}
+{\bf Gradescope Assignment: Due 2/24/21\\
+0 pts for no work\\ 2 pts for attempt\\ 4 pts for full answer}
+\end{center}
+By
+$$
+A{\bf x} = {\bf 0},
+$$
+we mean the matrix problem
+$$
+\bp a_{11} & a_{12} \\ a_{21} & a_{22}\ep\bp x_{1}\\x_{2} \ep = \bp 0\\ 0 \ep
+$$ 
+which can be written in the augmented form
+$$
+\left(
+\ba{cc|c}
+a_{11} & a_{12} & 0 \\ 
+a_{21} & a_{22} & 0 
+\ea
+\right)
+$$
+or component-by component so that 
+$$
+a_{11}x_{1} + a_{12}x_{2} = 0, ~ a_{21}x_{1} + a_{22}x_{2} = 0.
+$$
+We define the determinant of $A$, $\text{det}(A)$, to be 
+$$
+\text{det}(A) = a_{11}a_{22} - a_{12}a_{21}.
+$$
+\begin{enumerate}
+\item (Short) Show that if $A{\bf x}={\bf 0}$ has a nontrivial solution (i.e. $x_{1}$ or $x_{2}$ is not zero), then $\text{det}(A)=0$.  Your solution should address the two cases: 
+\begin{enumerate}
+\item $x_{1}\neq 0$, so that $a_{11}=-a_{12}x_{2}/x_{1}$ and $a_{21}=-a_{22}x_{2}/x_{1}$ 
+\item $x_{2}\neq 0$, so that $a_{12}=-a_{11}x_{1}/x_{2}$ and $a_{22}=-a_{21}x_{1}/x_{2}$ 
+\end{enumerate}
+\item (Short(ish)) Show that if $\text{det}(A)=0$ then $A{\bf x}=0$ has an infinite number of nontrivial solutions.   You should address the following cases:
+\begin{enumerate}
+\item $a_{11}\neq 0$, which leads to the row-reduced echelon matrix problem 
+$$
+\left(
+\ba{cc|c}
+a_{11} & a_{12} & 0 \\ 
+0 & \frac{a_{11}a_{22}-a_{12}a_{21}}{a_{11}} & 0 
+\ea
+\right)
+$$
+
+\item $a_{21}\neq 0$, which leads to the row-reduced matrix problem 
+$$
+\left(
+\ba{cc|c}
+0 & \frac{a_{12}a_{21}-a_{11}a_{22}}{a_{21}} & 0 \\ 
+a_{21} & a_{22} & 0 
+\ea
+\right)
+$$
+
+\item $a_{21} = 0$ and $a_{11} = 0$, which leads to the augmented matrix problem 
+$$
+\left(
+\ba{cc|c}
+0 & a_{12} & 0 \\ 
+0 & a_{22} & 0 
+\ea
+\right)
+$$
+
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
