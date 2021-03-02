@@ -1,0 +1,117 @@
+ \documentclass[a4paper,11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{dfn}{Definition}
+\newtheorem{lem}{Lemma}
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+\newcommand{\bc}{\begin{center}}
+\newcommand{\ec}{\end{center}}
+
+\newcommand{\ds}{\displaystyle}
+
+\newcommand{\bt}{\begin{tabular}}
+\newcommand{\et}{\end{tabular}}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+
+\newcommand{\bp}{\begin{pmatrix}}
+\newcommand{\ep}{\end{pmatrix}}
+
+\newcommand{\p}{\partial}
+\newcommand{\sech}{\mbox{sech}}
+
+\newcommand{\cf}{{\it cf.}~}
+
+\newcommand{\ltwo}{L_{2}(\mathbb{R}^{2})}
+\newcommand{\smooth}{C^{\infty}_{0}(\mathbb{R}^{2})}
+
+\newcommand{\br}{{\bf r}}
+\newcommand{\bk}{{\bf k}}
+\newcommand{\bv}{{\bf v}} 
+\newcommand{\bu}{{\bf u}}
+\newcommand{\bdd}{{\bf d}}
+\newcommand{\bpp}{{\bf p}}
+\newcommand{\bm}{{\bf m}}
+\newcommand{\bn}{{\bf n}}
+
+\newcommand{\pt}{\mathcal{K}}
+
+\newcommand{\gnorm}[1]{\left|\left| #1\right|\right|}
+\newcommand{\Lnorm}{L^{2}\left(\mathbb{R}^{2}\right)}
+\newcommand{\ipro}[2]{\left<#1,#2 \right>}
+\pagestyle{empty}
+\begin{document}
+
+\begin{center}
+{\bf Gradescope Assignment: Due 3/3/21\\
+0 pts for no work\\ 2 pts for attempt\\ 4 pts for full answer}
+\end{center}
+So as we discussed in class, we have the ``column space" form of matrix/vector multiplication whereby if we write a $2\times 2$ matrix $A$ in the form 
+\[
+A = \bp {\bf a}_{1} & \vline & {\bf a}_{2}  \ep
+\]
+where ${\bf a}_{j}$ is the $j^{\text{th}}$ column of $A$, then for 
+\[
+{\bf x} = \bp x_{1} \\ x_{2}\ep
+\]
+we have 
+\[
+A{\bf x} = x_{1}{\bf a}_{1}  + x_{2}{\bf a}_{2}
+\]
+\begin{enumerate}
+\item (Short) Using this formula, show that for a time dependent vector ${\bf x}(t)$ where
+\[
+{\bf x}(t) = \bp x_{1}(t) \\ x_{2}(t)\ep,
+\]
+that if $A$ is a time independent (or constant) $2\times 2$ matrix that 
+\[
+A\frac{d}{dt}{\bf x} = \frac{d}{dt}\left(A{\bf x}\right) 
+\]
+\item (Short) Suppose $A$ is a $2\times 2$ matrix such that $(\text{tr}(A))^{2}\neq 4\text{det}(A)$, which guarantees that $A$ is diagonalizable, so that 
+\[
+A = V\Lambda V^{-1}, ~ V = \bp {\bf v}_{1} & \vline & {\bf v}_{2}  \ep, ~ \Lambda = \bp \lambda_{1} & 0 \\ 0 & \lambda_{2} \ep, ~ A{\bf v}_{j} = \lambda_{j}{\bf v}_{j}, ~ \lambda_{1}\neq \lambda_{2}.
+\]
+Using this, show that the initial value problem
+\[
+\frac{d}{dt}{\bf x} = A{\bf x}(t), ~ {\bf x}(0) = {\bf x}_{0},
+\]
+can be rewritten in the form 
+\[
+\frac{d}{dt}{\bf y} = \Lambda{\bf y}(t), ~ {\bf y}(0) = V^{-1}{\bf x}_{0}
+\]
+where 
+\[
+{\bf y}(t) = V^{-1}{\bf x}(t).
+\]
+Start your solution from 
+\[
+\frac{d}{dt}{\bf x} = V\Lambda V^{-1}{\bf x}(t), ~ {\bf x}(0) = {\bf x}_{0},
+\]
+so that 
+\[
+V^{-1}\frac{d}{dt}{\bf x} = \Lambda V^{-1}{\bf x}(t), ~ {\bf x}(0) = {\bf x}_{0}.
+\]
+Use the result of the prior problem to help you along.  
+
+\end{enumerate}
+\end{document}
