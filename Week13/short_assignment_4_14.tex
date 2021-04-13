@@ -63,11 +63,29 @@
 \begin{document}
 
 \begin{center}
-{\bf Gradescope Assignment: Due 4/12/21\\
+{\bf Gradescope Assignment: Due 4/14/21\\
 0 pts for no work\\ 2 pts for attempt\\ 4 pts for full answer}
 \end{center}
 \begin{enumerate}
-\item 4.7.33
-\item 4.7.34
+\item As we've shown, one can write the solution to the initial value problem 
+\[
+x''(t) + x(t) = f(t), ~ x(0)=0, x'(0)=0,
+\]
+in the form
+\[
+x(t) = \int_{0}^{t}f(s)\sin(t-s)ds.
+\]
+For the forcing 
+\[
+f(t) = \left\{
+\ba{rl}
+At & 0\leq t \leq \pi \\
+A(2t-\pi) & \pi < t \leq 2\pi\\
+3\pi A & t > 2\pi
+\ea
+\right.
+\]
+where $A>0$, find $x(t)$.  Note, use the integral formulation of the solution provided in this problem prompt (though see also Problem 4.7.34 from the prior homework).  Any other approach will not receive credit. 
+\item 5.1.15
 \end{enumerate}
 \end{document}
